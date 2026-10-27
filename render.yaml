@@ -3,22 +3,22 @@ services:
   - type: web
     name: lansar-freight
     runtime: node
-    plan: starter            # a persistent disk requires a paid instance
+    plan: free               # demo: data resets on restart. For real use: plan starter + the disk block below
     region: virginia
     buildCommand: "echo no build step"
     startCommand: node --no-warnings=ExperimentalWarning server.js
     healthCheckPath: /healthz
-    disk:
-      name: lansar-data
-      mountPath: /var/data
-      sizeGB: 1
+    # disk:                  # uncomment with plan: starter to keep data permanently
+    #   name: lansar-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: 22.13.1
       - key: NODE_ENV
         value: production
       - key: DATA_DIR
-        value: /var/data
+        value: data          # change to /var/data when the disk is enabled
       - key: APP_SECRET
         generateValue: true
       - key: NOINDEX

@@ -10,6 +10,6 @@ if (!one("SELECT 1 FROM users WHERE role='owner'") && email && password) {
   else {
     run("INSERT INTO users (email,name,password_hash,role,created_at) VALUES (?,?,?,'owner',?)",
       email, process.env.ADMIN_NAME || 'Owner', hashPassword(password), new Date().toISOString());
-    console.log(`Created owner account ${email}. Remove ADMIN_PASSWORD from the environment now.`);
+    console.log(`Created owner account ${email}.`);
   }
 }

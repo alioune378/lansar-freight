@@ -13,7 +13,7 @@ npm start                         # http://localhost:3000   dashboard: /ops
 ```
 
 Data (database + uploaded documents) lives in `DATA_DIR` (default `./data`). **Back this folder up.**
-**Render (recommended):** in Render choose New → Blueprint, pick this GitHub repository, and fill in ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_NAME and STAFF_NOTIFY_EMAILS when asked. `render.yaml` sets up a Starter web service with a 1 GB persistent disk. The owner account is created on first start; afterwards remove ADMIN_PASSWORD from the environment. Remove `NOINDEX` when the site goes live on its real domain.
+**Render (recommended):** in Render choose New → Blueprint, pick this GitHub repository, and fill in ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_NAME and STAFF_NOTIFY_EMAILS when asked. `render.yaml` is set to Render's **free plan for demos**: data resets whenever the service restarts, and the owner account is re-created from ADMIN_EMAIL/ADMIN_PASSWORD on each start. For real use, switch to `plan: starter`, enable the disk block, set `DATA_DIR=/var/data`, then remove ADMIN_PASSWORD after the first sign-in. Remove `NOINDEX` when the site goes live on its real domain.
 
 Or deploy with the Dockerfile on any host with a persistent disk (Render, Railway, Fly.io, a VPS). Put it behind HTTPS and set `NODE_ENV=production`.
 
