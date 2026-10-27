@@ -1,0 +1,35 @@
+# Render Blueprint: New → Blueprint → pick this repository.
+services:
+  - type: web
+    name: lansar-freight
+    runtime: node
+    plan: starter            # a persistent disk requires a paid instance
+    region: virginia
+    buildCommand: "echo no build step"
+    startCommand: node --no-warnings=ExperimentalWarning server.js
+    healthCheckPath: /healthz
+    disk:
+      name: lansar-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 22.13.1
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data
+      - key: APP_SECRET
+        generateValue: true
+      - key: NOINDEX
+        value: "1"           # demo: keep it out of Google until LANSAR approves
+      - key: MAIL_PROVIDER
+        value: outbox
+      - key: ADMIN_EMAIL
+        sync: false          # you type it in Render when creating the Blueprint
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_NAME
+        sync: false
+      - key: STAFF_NOTIFY_EMAILS
+        sync: false

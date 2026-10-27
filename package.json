@@ -1,0 +1,15 @@
+{
+  "name": "lansar-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LANSAR Freight Shipping Corp \u2014 public website, quote system, tracking, customer service and operations dashboard",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --no-warnings=ExperimentalWarning server.js",
+    "dev": "node --watch --no-warnings=ExperimentalWarning server.js",
+    "create-admin": "node --no-warnings=ExperimentalWarning scripts/create-admin.js"
+  }
+}
